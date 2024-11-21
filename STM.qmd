@@ -1,0 +1,486 @@
+---
+title: "STM"
+format: html
+editor: visual
+execute:
+  cache: true
+---
+
+## AI Career STM
+
+```{r, echo=FALSE}
+library(tidyverse)
+library(stm)
+library(stminsights)
+library(parallel)
+library(vroom)
+library(broom)
+library(reticulate)
+library(reshape2)
+library(tidyr)
+library(cowplot)
+library(writexl)
+library(ggplot2)
+library(knitr)
+library(reshape2)
+library(gridExtra)
+library(quanteda)
+library(openxlsx)
+library(parallel)
+py_config()
+```
+
+```{r}
+# df <- data.frame(py_load_object('./1014_non_STEM_marked_v2.pkl'))
+df <- readRDS('./1014_non_STEM_marked_v2.rds')
+```
+
+```{r}
+# 필요한 컬럼만 활용
+df <- df %>% select(RID,Title, Company, Position, Experience, Degree, Offer_type, non.STEM,bigrams)
+```
+
+```{r}
+# 주어진 데이터에서 '석사 졸 이상'과 '박사 졸 이상'을 '대학원 졸 이상'으로 변환
+df$Degree <- ifelse(df$Degree %in% c('석사 졸 이상', '박사 졸 이상'), '대학원 졸 이상', df$Degree)
+
+# Degree 변수를 factor로 변환
+df$Degree <- factor(df$Degree, levels = c('학사 졸 이상', '학력무관', '대학원 졸 이상'))
+
+# 학력무관을 base level로 설정
+df$Degree <- relevel(df$Degree, ref = '학력무관')
+
+# 결과 확인
+print(levels(df$Degree))
+```
+
+```{r}
+df$Experience <- ifelse(df$Experience %in% c('중간급(4-8년차)', '시니어/리더급(9년차 이상)'), '중간/시니어급', df$Experience)
+
+df$Experience <- factor(df$Experience, levels = c('경력무관', '주니어급(1-3년차)', '중간/시니어급'))
+
+# 학력무관을 base level로 설정
+df$Experience <- relevel(df$Experience, ref = '경력무관')
+
+# 결과 확인
+print(levels(df$Experience))
+```
+
+```{r}
+# TRUE를 'non_STEM', FALSE를 'STEM'으로 변환
+df$non.STEM <- ifelse(df$non.STEM == TRUE, 'non_STEM', 'STEM')
+
+# factor 변수로 변환
+df$non.STEM <- factor(df$non.STEM, levels = c('STEM', 'non_STEM'))
+
+df <- df %>% rename(STEM = non.STEM)
+
+# non_stem을 base level로 설정
+df$STEM <- relevel(df$STEM, ref = 'non_STEM')
+
+# 결과 확인
+print(table(df$STEM))
+```
+
+```{r}
+df <- df %>% filter(!is.na(Degree)) # NA 값이 있는 행 제거
+```
+
+```{r}
+# 토큰 리스트->문자열 처리 (for STM)
+df$bigrams <- map_chr(df$bigrams,str_c,collapse='  ')
+```
+
+```{r}
+# 데이터에 결측치가 있는지 확인
+sum(is.na(df))
+```
+
+```{r}
+stopwords <- c('2024','_')
+```
+
+```{r}
+myprocess <- textProcessor(df$bigrams, metadata = df ,wordLengths=c(2,Inf),lowercase = F,
+                           removenumbers = F, removepunctuation = F, removestopwords = F, stem = F,customstopwords = stopwords)
+myprocess
+length(myprocess$docs.removed)
+```
+
+```{r}
+# N개 이상의 문서에서 등장한 단어만 사용(lower.thresh)
+out <- prepDocuments(myprocess$documents, myprocess$vocab, myprocess$meta,lower.thresh = 50,verbose = F)
+```
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+# model1_searchK <- searchK(out$documents, out$vocab, K = c(4:30),
+#                                 prevalence = ~ Degree+Experience+STEM,
+#                                 data = out$meta, init.type="Spectral"
+#                                   ,cores=detectCores()-1)
+# saveRDS(model1_searchK,'model1_searchK.rds')
+model1_searchK <- readRDS('./model1_searchK.rds')
+```
+
+```{r}
+plot(model1_searchK)
+```
+
+```{r}
+model1_res <- model1_searchK$results
+model1_res <- unnest(model1_res,c(K,exclus,semcoh))
+
+ggplot(model1_res, aes(x = semcoh, y = exclus, label = K)) +
+  geom_point() +
+  geom_text(vjust = -0.5, hjust = 0.5) +
+  labs(x = "Semantic Coherence", y = "Exclusivity", title = "Semantic Coherence vs Exclusivity") +
+  theme_minimal()
+```
+
+```{r}
+# 모델 결과에서 데이터 준비
+model1_res <- model1_searchK$results
+model1_res <- unnest(model1_res, c(K, exclus, semcoh))
+
+# 고해상도 PNG로 저장
+png(filename = "Semantic_Coherence_vs_Exclusivity_High_Res.png", width = 3000, height = 1500, res = 600)
+
+# 그래프 생성 (글자 크기 조정)
+ggplot(model1_res, aes(x = semcoh, y = exclus, label = K)) +
+  geom_point() +
+  geom_text(vjust = -0.5, hjust = 0.5, size = 3) +  # 텍스트 크기 조정 (size = 3)
+  labs(x = "Semantic Coherence", y = "Exclusivity", title = "Semantic Coherence vs Exclusivity") +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 16),   # 제목 크기 조정
+    axis.title = element_text(size = 14),   # 축 레이블 크기 조정
+    axis.text = element_text(size = 12)     # 축 눈금 크기 조정
+  )
+
+# PNG 저장 종료
+dev.off()
+
+# 저장된 파일 확인 메시지
+print("Semantic_Coherence_vs_Exclusivity_High_Res.png 파일이 저장되었습니다.")
+```
+
+```{r}
+stm_model1 <- stm(out$documents, out$vocab, K=11,
+              prevalence= ~Degree+Experience+STEM,
+              data=out$meta, init.type="Spectral",seed=2024,
+              verbose = F)
+```
+
+```{r}
+labelTopics(stm_model1, n = 10)
+```
+
+```{r}
+plot(stm_model1,type='summary',labeltype = 'frex',n=10)
+```
+
+```{r}
+# STM 모델에서 labelTopics() 함수 실행
+topic_labels <- labelTopics(stm_model1, n = 10)
+
+# 토픽의 개수 추출 (토픽 개수에 맞춰)
+num_topics <- nrow(topic_labels$prob)
+
+# 토픽 비중 계산 (각 토픽의 평균 비중을 계산)
+topic_proportions <- colMeans(stm_model1$theta) *100
+
+# 각 토픽에 대한 상위 단어를 데이터프레임으로 변환
+topic_data <- data.frame(
+  Topic = 1:num_topics,
+  Proportion = topic_proportions,  # 각 토픽의 비중 추가
+  Highest_Prob = sapply(1:num_topics, function(i) paste(topic_labels$prob[i, ], collapse = ", ")),
+  FREX = sapply(1:num_topics, function(i) paste(topic_labels$frex[i, ], collapse = ", ")),
+  Lift = sapply(1:num_topics, function(i) paste(topic_labels$lift[i, ], collapse = ", ")),
+  Score = sapply(1:num_topics, function(i) paste(topic_labels$score[i, ], collapse = ", "))
+)
+
+# 데이터프레임 확인
+print(head(topic_data))
+```
+
+```{r}
+write.xlsx(topic_data, file = "STM_Topic_Model_Results.xlsx")
+```
+
+### 효과 추정
+
+```{r}
+m1_K <- stm_model1$settings$dim$K
+stm_effect_model <-  estimateEffect(1:m1_K ~Degree+Experience+STEM,
+                                 stm_model1, meta = out$meta, uncertainty = "Global",prior=1e-5)
+```
+
+```{r}
+# 토픽 모델의 토픽 분포(theta)로부터 데이터 프레임 생성
+topic_document <- data.frame(stm_model1[["theta"]])
+# 추가 메타 데이터 컬럼 할당
+topic_document$class <- out$meta$Degree
+
+# 토픽 개수를 기반으로 이름 생성
+num_topics <- ncol(stm_model1[["theta"]])  # 토픽 모델의 토픽 개수
+topic_names <- paste("topic", 1:num_topics, sep = "")  # 토픽 이름 생성
+
+# 새로운 컬럼 이름 설정
+names(topic_document) <- c(topic_names, "Degree" )
+```
+
+```{r}
+topic_document_long <-  
+topic_document %>%
+  pivot_longer(
+    cols = starts_with("topic"),
+    names_to = "topic",
+    values_to = "distribution"
+  ) %>% 
+  mutate(
+    topic = factor(topic, levels = paste0("topic", 1:m1_K))
+  )
+```
+
+```{r}
+# Boxplot 시각화: 학위별로 토픽의 분포 표시
+ggplot(topic_document_long, aes(x = topic, y = distribution, fill = Degree)) +
+  geom_boxplot() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Topic Distribution by Degree", x = "Topic", y = "Distribution") +
+  facet_wrap(~Degree, scales = "free")
+```
+
+```{r}
+summary(stm_effect_model, topics= 1:m1_K)
+```
+
+##### 학력 효과
+
+```{r}
+plot.estimateEffect(stm_effect_model, covariate = "Degree", 
+                    topics = c(1:m1_K), method = "difference",
+                    model = stm_model1, # to show labels alongside
+                    cov.value1 = "학사 졸 이상", cov.value2 = "대학원 졸 이상",
+                    xlab = "대학원 졸 이상 <------------------------> 학사 졸 이상", xlim = c(-.6, .6),
+                    labeltype = "frex", n = 7, 
+                    width = 100,  verbose.labels = F)
+```
+
+```{r}
+plot.estimateEffect(stm_effect_model, covariate = "Degree", 
+                    topics = c(1:m1_K), method = "difference",
+                    model = stm_model1, # to show labels alongside
+                    cov.value1 = "학력무관", cov.value2 = "대학원 졸 이상",
+                    xlab = "대학원 졸 이상 <------------------------> 학력무관", xlim = c(-.6, .6),
+                    labeltype = "frex", n = 7, 
+                    width = 100,  verbose.labels = F)
+```
+
+```{r}
+par(mfrow = c(2, 2))  # 2행 5열로 subplot 배치
+
+# 명목변수의 세 가지 수준에 대한 레이블 설정
+level_labels <- c("학력무관", "학사졸 이상", "대학원 졸 이상")
+
+# Degree 변수에 따라 범례를 커스터마이즈하여 그래프 생성
+for (i in 1:10) {
+  plot.estimateEffect(stm_effect_model, covariate = "Degree", 
+                      topics = i, method = "pointestimate", 
+                      main = paste("Topic", i), 
+                      labeltype = "custom", custom.labels = level_labels)  # 수준 레이블로 범례 커스터마이즈
+}
+```
+
+##### 경력 효과
+
+```{r}
+par(mfrow = c(2, 2))  # 2행 5열로 subplot 배치
+
+# 명목변수의 세 가지 수준에 대한 레이블 설정
+level_labels <- c('경력무관', '주니어급(1-3년차)', '중간/시니어급')
+
+# Degree 변수에 따라 범례를 커스터마이즈하여 그래프 생성
+for (i in 1:10) {
+  plot.estimateEffect(stm_effect_model, covariate = "Experience", 
+                      topics = i, method = "pointestimate", 
+                      main = paste("Topic", i), 
+                      labeltype = "custom", custom.labels = level_labels)  # 수준 레이블로 범례 커스터마이즈
+}
+```
+
+##### 전공 효과
+
+```{r}
+plot.estimateEffect(stm_effect_model, covariate = "STEM", 
+                    topics = c(1:m1_K), method = "difference",
+                    model = stm_model1, # to show labels alongside
+                    cov.value1 = "STEM", cov.value2 = "non_STEM",
+                    xlab = "non_STEM <------------------------> STEM", xlim = c(-.6, .6),
+                    labeltype = "frex", n = 7, 
+                    width = 100,  verbose.labels = F)
+```
+
+### 문서별 토픽 비중 (AI 스킬 매칭)
+
+```{r}
+# STM 모델에서 theta 행렬 추출 (각 문서의 토픽 비중)
+theta_matrix <- stm_model1$theta  # 각 행은 문서, 각 열은 토픽에 대한 비중
+
+# theta 행렬을 데이터프레임으로 변환
+theta_df <- as.data.frame(theta_matrix)
+
+# 각 열의 이름을 토픽 번호로 설정 (예: "Topic 1", "Topic 2", ..., "Topic 11")
+colnames(theta_df) <- paste("Topic", 1:ncol(theta_df), sep = " ")
+
+# 문서 ID를 추가 (선택 사항: 문서 번호 추가)
+theta_df$Document <- 1:nrow(theta_df)
+
+# 결과 확인
+head(theta_df)
+
+```
+
+```{r}
+# STM 모델에서 theta 행렬 추출 (각 문서의 토픽 비중)
+theta_matrix <- stm_model1$theta  # 각 행은 문서, 각 열은 토픽에 대한 비중
+
+# 토픽별로 매핑된 스킬과 가중치를 데이터프레임으로 정의
+topic_skill_mapping <- data.frame(
+  Topic = 1:11,
+  Skills = c("Machine Learning, Neural Networks",  # Topic 1
+             "",                                    # Topic 2 (매핑 없음)
+             "Visual Image Recognition, Neural Networks",  # Topic 3
+             "Artificial Intelligence",             # Topic 4
+             "Machine Learning",                    # Topic 5
+             "Robotics",                            # Topic 6
+             "Generative Artificial Intelligence, Natural Language Processing (NLP)",  # Topic 7
+             "",                    # Topic 8
+             "Artificial Intelligence",     # Topic 9
+             "Machine Learning",                    # Topic 10
+             "Machine Learning"),                   # Topic 11
+  Weights = c(0.5,    # Topic 1 (2개의 스킬)
+              0,      # Topic 2 (매핑 없음)
+              0.5,    # Topic 3 (2개의 스킬)
+              1,      # Topic 4 (1개의 스킬)
+              1,      # Topic 5 (1개의 스킬)
+              1,      # Topic 6 (1개의 스킬)
+              0.5,    # Topic 7 (2개의 스킬)
+              0,      # Topic 8 (1개의 스킬)
+              1,      # Topic 9 (1개의 스킬)
+              1,      # Topic 10 (1개의 스킬)
+              1       # Topic 11 (1개의 스킬)
+  )
+)
+
+# 각 문서별 스킬 비중 계산
+skill_proportions <- data.frame(
+  Document = 1:nrow(theta_matrix)
+)
+
+# 스킬 리스트
+skills <- c("Machine Learning", "Neural Networks", "Visual Image Recognition", "Artificial Intelligence",
+            "Robotics", "Generative Artificial Intelligence", "Natural Language Processing (NLP)")
+
+# 스킬에 대한 비중 계산을 위한 초기화
+for (skill in skills) {
+  skill_proportions[[skill]] <- 0
+}
+
+# 각 문서에 대해 스킬 비중 계산
+for (doc in 1:nrow(theta_matrix)) {
+  for (topic in 1:ncol(theta_matrix)) {
+    if (topic_skill_mapping$Skills[topic] != "") {
+      skill_list <- strsplit(topic_skill_mapping$Skills[topic], ", ")[[1]]
+      weight <- topic_skill_mapping$Weights[topic]
+      
+      # 각 스킬에 대해 비중 계산
+      for (skill in skill_list) {
+        skill_proportions[doc, skill] <- skill_proportions[doc, skill] + theta_matrix[doc, topic] * weight
+      }
+    }
+  }
+}
+
+# 결과 확인
+head(skill_proportions)
+```
+
+```{r}
+write.xlsx(skill_proportions,"skill_proportions.xlsx")
+```
+
+```{r}
+# 각 스킬의 중요도를 합산 (전체 문서에서 각 스킬의 비중 합계)
+skill_importance <- colSums(skill_proportions[ , -1])  # Document 열 제외
+
+# 데이터프레임으로 변환
+skill_importance_df <- data.frame(Skill = names(skill_importance), Importance = skill_importance)
+
+# 막대 그래프로 시각화
+p <- ggplot(skill_importance_df, aes(x = reorder(Skill, Importance), y = Importance, fill = Skill)) +
+  geom_bar(stat = "identity", show.legend = FALSE) +
+  coord_flip() +  # 가로로 시각화
+  labs(x = "Skill", y = "Importance", title = "AI Skills Importance Across All Documents") +
+  theme_minimal()
+
+# 고해상도 PNG로 저장
+ggsave("AI_Skills_Importance_High_Res.png", plot = p, width = 10, height = 6, dpi = 300)
+```
+
+```{r}
+# 파이 차트 시각화
+ggplot(skill_importance_df, aes(x = "", y = Importance, fill = Skill)) +
+  geom_bar(stat = "identity", width = 1) +
+  coord_polar("y", start = 0) +
+  labs(title = "AI Skills Importance Across All Documents") +
+  theme_void() +  # 불필요한 요소 제거
+  theme(legend.position = "right")
+
+```
+
+```{r}
+# df 변수에서 Degree, Experience, STEM 정보 추가
+# skill_proportions에 df의 문서별 Degree, Experience, STEM 정보를 결합
+skill_proportions$Degree <- df$Degree
+skill_proportions$Experience <- df$Experience
+skill_proportions$STEM <- df$STEM
+
+# 결과 확인
+head(skill_proportions)
+```
+
+```{r}
+# 스킬 비중 데이터를 long 형식으로 변환
+skill_long <- skill_proportions %>%
+  pivot_longer(cols = -c(Document, Degree, Experience, STEM), names_to = "Skill", values_to = "Importance")
+
+# 각 Degree, Experience, STEM에 따른 스킬 중요도를 평균 계산
+skill_summary <- skill_long %>%
+  group_by(Degree, Experience, STEM, Skill) %>%
+  summarise(Average_Importance = mean(Importance, na.rm = TRUE))
+
+write.xlsx(skill_summary,'skill_summary.xlsx')
+```
+
+```{r}
+# Degree에 따른 스킬 중요도 시각화
+ggplot(skill_summary, aes(x = Skill, y = Average_Importance, fill = Degree)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "AI Skill Importance by Degree", x = "Skill", y = "Average Importance") +
+  theme_minimal() +
+  coord_flip()
+
+# Experience에 따른 스킬 중요도 시각화
+ggplot(skill_summary, aes(x = Skill, y = Average_Importance, fill = Experience)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "AI Skill Importance by Experience", x = "Skill", y = "Average Importance") +
+  theme_minimal() +
+  coord_flip()
+
+# STEM 여부에 따른 스킬 중요도 시각화
+ggplot(skill_summary, aes(x = Skill, y = Average_Importance, fill = STEM)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "AI Skill Importance by STEM", x = "Skill", y = "Average Importance") +
+  theme_minimal() +
+  coord_flip()
+```

@@ -1,0 +1,7 @@
+"0",""
+"0","# STEM 여부에 따른 스킬 중요도 시각화"
+"0","ggplot(skill_summary, aes(x = Skill, y = Average_Importance, fill = STEM)) +"
+"0","  geom_bar(stat = ""identity"", position = ""dodge"") +"
+"0","  labs(title = ""AI Skill Importance by STEM"", x = ""Skill"", y = ""Average Importance"") +"
+"0","  theme_minimal() +"
+"0","  coord_flip()"

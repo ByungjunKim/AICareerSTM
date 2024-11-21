@@ -1,0 +1,8 @@
+"0","# df 변수에서 Degree, Experience, STEM 정보 추가"
+"0","# skill_proportions에 df의 문서별 Degree, Experience, STEM 정보를 결합"
+"0","skill_proportions$Degree <- df$Degree"
+"0","skill_proportions$Experience <- df$Experience"
+"0","skill_proportions$STEM <- df$STEM"
+"0",""
+"0","# 결과 확인"
+"0","head(skill_proportions)"

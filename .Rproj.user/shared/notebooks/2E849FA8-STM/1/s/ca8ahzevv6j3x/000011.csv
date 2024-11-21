@@ -1,0 +1,7 @@
+"0","plot.estimateEffect(stm_effect_model, covariate = ""STEM"", "
+"0","                    topics = c(1:m1_K), method = ""difference"","
+"0","                    model = stm_model1, # to show labels alongside"
+"0","                    cov.value1 = ""STEM"", cov.value2 = ""non_STEM"","
+"0","                    xlab = ""non_STEM <------------------------> STEM"", xlim = c(-.6, .6),"
+"0","                    labeltype = ""frex"", n = 7, "
+"0","                    width = 100,  verbose.labels = F)"

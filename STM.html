@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>STM</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="STM_files/libs/clipboard/clipboard.min.js"></script>
+<script src="STM_files/libs/quarto-html/quarto.js"></script>
+<script src="STM_files/libs/quarto-html/popper.min.js"></script>
+<script src="STM_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="STM_files/libs/quarto-html/anchor.min.js"></script>
+<link href="STM_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="STM_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="STM_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="STM_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="STM_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">STM</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="ai-career-stm" class="level2">
+<h2 class="anchored" data-anchor-id="ai-career-stm">AI Career STM</h2>
+<div class="cell" data-hash="STM_cache/html/unnamed-chunk-1_b6a0dfaec332ff6827a33ee29bdf535e">
+<div class="cell-output cell-output-stdout">
+<pre><code>python:         /home/bjkim/miniconda3/envs/python311/bin/python3.11
+libpython:      /home/bjkim/miniconda3/envs/python311/lib/libpython3.11.so
+pythonhome:     /home/bjkim/miniconda3/envs/python311:/home/bjkim/miniconda3/envs/python311
+version:        3.11.9 | packaged by conda-forge | (main, Apr 19 2024, 18:36:13) [GCC 12.3.0]
+numpy:          /home/bjkim/miniconda3/envs/python311/lib/python3.11/site-packages/numpy
+numpy_version:  1.26.4
+
+NOTE: Python version was forced by RETICULATE_PYTHON_FALLBACK</code></pre>
+</div>
+</div>
+<div class="cell" data-hash="STM_cache/html/unnamed-chunk-2_996eebd0ce61b6a949965abbd4984784">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># df &lt;- data.frame(py_load_object('./1014_non_STEM_marked_v2.pkl'))</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">'./1014_non_STEM_marked_v2.rds'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="STM_cache/html/unnamed-chunk-3_08eb52e91c48edfed182a81b46ecd5df">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 필요한 컬럼만 활용</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">select</span>(RID,Title, Company, Position, Experience, Degree, Offer_type, non.STEM,bigrams)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="STM_cache/html/unnamed-chunk-4_5d1e86a311f2786e806c1d93e17ebb29">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 주어진 데이터에서 '석사 졸 이상'과 '박사 졸 이상'을 '대학원 졸 이상'으로 변환</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>Degree <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(df<span class="sc">$</span>Degree <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">'석사 졸 이상'</span>, <span class="st">'박사 졸 이상'</span>), <span class="st">'대학원 졸 이상'</span>, df<span class="sc">$</span>Degree)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Degree 변수를 factor로 변환</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>Degree <span class="ot">&lt;-</span> <span class="fu">factor</span>(df<span class="sc">$</span>Degree, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">'학사 졸 이상'</span>, <span class="st">'학력무관'</span>, <span class="st">'대학원 졸 이상'</span>))</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 학력무관을 base level로 설정</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>Degree <span class="ot">&lt;-</span> <span class="fu">relevel</span>(df<span class="sc">$</span>Degree, <span class="at">ref =</span> <span class="st">'학력무관'</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 결과 확인</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">levels</span>(df<span class="sc">$</span>Degree))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "학력무관"       "학사 졸 이상"   "대학원 졸 이상"</code></pre>
+</div>
+</div>
+<div class="cell" data-hash="STM_cache/html/unnamed-chunk-5_3082b1db8b241079cc08c0fa694b6608">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>Experience <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(df<span class="sc">$</span>Experience <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">'중간급(4-8년차)'</span>, <span class="st">'시니어/리더급(9년차 이상)'</span>), <span class="st">'중간/시니어급'</span>, df<span class="sc">$</span>Experience)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>Experience <span class="ot">&lt;-</span> <span class="fu">factor</span>(df<span class="sc">$</span>Experience, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">'경력무관'</span>, <span class="st">'주니어급(1-3년차)'</span>, <span class="st">'중간/시니어급'</span>))</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 학력무관을 base level로 설정</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>Experience <span class="ot">&lt;-</span> <span class="fu">relevel</span>(df<span class="sc">$</span>Experience, <span class="at">ref =</span> <span class="st">'경력무관'</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 결과 확인</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">levels</span>(df<span class="sc">$</span>Experience))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "경력무관"          "주니어급(1-3년차)" "중간/시니어급"    </code></pre>
+</div>
+</div>
+<div class="cell" data-hash="STM_cache/html/unnamed-chunk-6_af9fbe43311df34f9fb1ed76d48c4cbe">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># TRUE를 'non_STEM', FALSE를 'STEM'으로 변환</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>non.STEM <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(df<span class="sc">$</span>non.STEM <span class="sc">==</span> <span class="cn">TRUE</span>, <span class="st">'non_STEM'</span>, <span class="st">'STEM'</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># factor 변수로 변환</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>non.STEM <span class="ot">&lt;-</span> <span class="fu">factor</span>(df<span class="sc">$</span>non.STEM, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">'STEM'</span>, <span class="st">'non_STEM'</span>))</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">STEM =</span> non.STEM)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># non_stem을 base level로 설정</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>STEM <span class="ot">&lt;-</span> <span class="fu">relevel</span>(df<span class="sc">$</span>STEM, <span class="at">ref =</span> <span class="st">'non_STEM'</span>)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 결과 확인</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">table</span>(df<span class="sc">$</span>STEM))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+non_STEM     STEM 
+     769     1005 </code></pre>
+</div>
+</div>
+<div class="cell" data-hash="STM_cache/html/unnamed-chunk-7_fd1b54841c0dfcb22e959c291b1810b2">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Degree)) <span class="co"># NA 값이 있는 행 제거</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="STM_cache/html/unnamed-chunk-8_9db5c2c2d33f8b660f69a426112292a0">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 토큰 리스트-&gt;문자열 처리 (for STM)</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>bigrams <span class="ot">&lt;-</span> <span class="fu">map_chr</span>(df<span class="sc">$</span>bigrams,str_c,<span class="at">collapse=</span><span class="st">'  '</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="STM_cache/html/unnamed-chunk-9_c90ff45200912fa02b3044182954a56c">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 데이터에 결측치가 있는지 확인</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(df))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+</div>
+<div class="cell" data-hash="STM_cache/html/unnamed-chunk-10_450f28a64e696a37d3d6b062d171a07b">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>stopwords <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'2024'</span>,<span class="st">'_'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="STM_cache/html/unnamed-chunk-11_ca4976b4b38e7101cab1863acac8d0e6">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>myprocess <span class="ot">&lt;-</span> <span class="fu">textProcessor</span>(df<span class="sc">$</span>bigrams, <span class="at">metadata =</span> df ,<span class="at">wordLengths=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="cn">Inf</span>),<span class="at">lowercase =</span> F,</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">removenumbers =</span> F, <span class="at">removepunctuation =</span> F, <span class="at">removestopwords =</span> F, <span class="at">stem =</span> F,<span class="at">customstopwords =</span> stopwords)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Building corpus... 
+Remove Custom Stopwords...
+Creating Output... </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>myprocess</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>A text corpus with 1774 documents, and an 9987 word dictionary.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(myprocess<span class="sc">$</span>docs.removed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+</div>
+<div class="cell" data-hash="STM_cache/html/unnamed-chunk-12_a7486d41be818b7ca0551fc1ea582278">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># N개 이상의 문서에서 등장한 단어만 사용(lower.thresh)</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">prepDocuments</span>(myprocess<span class="sc">$</span>documents, myprocess<span class="sc">$</span>vocab, myprocess<span class="sc">$</span>meta,<span class="at">lower.thresh =</span> <span class="dv">50</span>,<span class="at">verbose =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="STM_cache/html/unnamed-chunk-14_05d6aab9b349ca78ec16892c233bfdb3">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model1_searchK)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="STM_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell" data-hash="STM_cache/html/unnamed-chunk-15_0435a0080084a63db7d45b8d7a640073">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>model1_res <span class="ot">&lt;-</span> model1_searchK<span class="sc">$</span>results</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>model1_res <span class="ot">&lt;-</span> <span class="fu">unnest</span>(model1_res,<span class="fu">c</span>(K,exclus,semcoh))</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(model1_res, <span class="fu">aes</span>(<span class="at">x =</span> semcoh, <span class="at">y =</span> exclus, <span class="at">label =</span> K)) <span class="sc">+</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Semantic Coherence"</span>, <span class="at">y =</span> <span class="st">"Exclusivity"</span>, <span class="at">title =</span> <span class="st">"Semantic Coherence vs Exclusivity"</span>) <span class="sc">+</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="STM_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell" data-hash="STM_cache/html/unnamed-chunk-16_f2c2f0061fdee04f068e0c307c915673">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 모델 결과에서 데이터 준비</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>model1_res <span class="ot">&lt;-</span> model1_searchK<span class="sc">$</span>results</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>model1_res <span class="ot">&lt;-</span> <span class="fu">unnest</span>(model1_res, <span class="fu">c</span>(K, exclus, semcoh))</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 고해상도 PNG로 저장</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="at">filename =</span> <span class="st">"Semantic_Coherence_vs_Exclusivity_High_Res.png"</span>, <span class="at">width =</span> <span class="dv">3000</span>, <span class="at">height =</span> <span class="dv">1500</span>, <span class="at">res =</span> <span class="dv">600</span>)</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 그래프 생성 (글자 크기 조정)</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(model1_res, <span class="fu">aes</span>(<span class="at">x =</span> semcoh, <span class="at">y =</span> exclus, <span class="at">label =</span> K)) <span class="sc">+</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span>  <span class="co"># 텍스트 크기 조정 (size = 3)</span></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Semantic Coherence"</span>, <span class="at">y =</span> <span class="st">"Exclusivity"</span>, <span class="at">title =</span> <span class="st">"Semantic Coherence vs Exclusivity"</span>) <span class="sc">+</span></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">16</span>),   <span class="co"># 제목 크기 조정</span></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>),   <span class="co"># 축 레이블 크기 조정</span></span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>)     <span class="co"># 축 눈금 크기 조정</span></span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a><span class="co"># PNG 저장 종료</span></span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>png 
+  2 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 저장된 파일 확인 메시지</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"Semantic_Coherence_vs_Exclusivity_High_Res.png 파일이 저장되었습니다."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Semantic_Coherence_vs_Exclusivity_High_Res.png 파일이 저장되었습니다."</code></pre>
+</div>
+</div>
+<div class="cell" data-hash="STM_cache/html/unnamed-chunk-17_684377af98b6b68c8506265e28fd0d72">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>stm_model1 <span class="ot">&lt;-</span> <span class="fu">stm</span>(out<span class="sc">$</span>documents, out<span class="sc">$</span>vocab, <span class="at">K=</span><span class="dv">11</span>,</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">prevalence=</span> <span class="sc">~</span>Degree<span class="sc">+</span>Experience<span class="sc">+</span>STEM,</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">data=</span>out<span class="sc">$</span>meta, <span class="at">init.type=</span><span class="st">"Spectral"</span>,<span class="at">seed=</span><span class="dv">2024</span>,</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">verbose =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="STM_cache/html/unnamed-chunk-18_88866069193550c4fee0b253becab9a4">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">labelTopics</span>(stm_model1, <span class="at">n =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Topic 1 Top Words:
+     Highest Prob: 모델, 기계학습, 학습, 딥러닝, 머신러닝_엔지니어, 프레임_워크, Tensorflow, PyTorch, 개발, 사용 
+     FREX: 기계학습, 모델, 학습, PyTorch, AIML, 프레임_워크, Engineering, 배포, Computer, Tensorflow 
+     Lift: Science, Computer, GPU, Engineering, 기계학습, 수상, AIML, PyTorch, 배포, 모델 
+     Score: Science, 모델, 기계학습, PyTorch, 딥러닝, Tensorflow, Computer, 학습, 머신러닝_엔지니어, 서빙 
+Topic 2 Top Words:
+     Highest Prob: 지원, 우대, 졸업, 사유, 채용, 경우, 취업, 입사, 국가, 직무 
+     FREX: 취업, 채용, 서류, 경우, 의거, 입사, 장애인, 법령, 사유, 졸업 
+     Lift: 서류, 허위, 취업, 건강, 기재, 의거, 취소, 채용, 이내, 법령 
+     Score: 건강, 채용, 취업, 서류, 입사, 경우, 의거, 법령, 취소, 허위 
+Topic 3 Top Words:
+     Highest Prob: 연구, 분야, 딥러닝, 논문, 알고리즘, 리서치, 컴퓨터_비전, 영상, 이상, AI 
+     FREX: 연구, 영상, 컴퓨터_비전, 의료, 논문, 학회, 컴퓨터공학_전자공학, 딥러닝, 알고리즘, 3D 
+     Lift: 박사, 의료, 영상, 3D, 기계공학, 학회, 컴퓨터_비전, 연구, 컴퓨터공학_전자공학, 저널 
+     Score: 박사, 연구, 딥러닝, 논문, 컴퓨터_비전, 영상, 의료, 3D, 알고리즘, 학회 
+Topic 4 Top Words:
+     Highest Prob: 기술, AI, 능력, 프로젝트, 다양, 협업, 이해, 고객, 문제_해결, 문제 
+     FREX: 새롭, 협업, 문제, 디자인, 원활, PMPO, 커뮤니케이션, 해결, 게임, 제작 
+     Lift: PMPO, 이해관계자, 디자인, 시키, 혁신, 기회, 원활, 뛰어나, 새롭, 역할 
+     Score: PMPO, AI, 게임, 기술, 고객, 새롭, 협업, 문제, 문제_해결, 제품 
+Topic 5 Top Words:
+     Highest Prob: 데이터, 데이터_분석, 분석, 활용, 비즈니스, 기반, 서비스, SQL, 능력, 지표 
+     FREX: 지표, 시각, 비즈니스, 대시보드, BI, 인사이트, 추출, AB, 의사_결정, 가설 
+     Lift: Tableau, AB, BI, 대시보드, 인사이트, 지표, 가설, 시각, 의사_결정, 추출 
+     Score: Tableau, 데이터_분석, 지표, 대시보드, BI, AB, SQL, 데이터, 비즈니스, 가설 
+Topic 6 Top Words:
+     Highest Prob: 개발, 이상, 보유자, 경험자, 경력, 시스템, 기술, SW, 물류, 검증 
+     FREX: 경험자, 보유자, 물류, 제어, SW, 경력, 시스템, 전자, 이상, 개발 
+     Lift: 물류, 제어, 경험자, 보유자, 전자, SW, 전기, 계열, 학력, 경력자 
+     Score: 물류, 보유자, 경험자, 제어, SW, 개발, 시스템, 전자, 전기, 계열 
+Topic 7 Top Words:
+     Highest Prob: 개발, AI, 기술, 서비스, 기반, 활용, LLM, 자연어, 보유, 이해 
+     FREX: LLM, AI, 자연어, 서비스, 생성형_AI, 상용, 기술, 개발, 기반, 최신 
+     Lift: 엔진, RAG, LLM, 상용, 언어_모델, 텍스트, 자연어, 검색, 생성형_AI, 자연어_처리 
+     Score: 엔진, LLM, 자연어, AI, 개발, 기술, 상용, 생성형_AI, 서비스, 언어_모델 
+Topic 8 Top Words:
+     Highest Prob: 업무, 전공_무관, 가능, 정보, 분석, 지원, 작성, 사용, 상품, 리서치 
+     FREX: 정보, 전공_무관, 업무, 상품, 조사, 작성, 가능, 프로그램, 문서, 자료 
+     Lift: 정보, 조사, 상품, 전공_무관, 자료, 업무, 프로그램, 적극, 경영, 작성 
+     Score: 정보, 전공_무관, 업무, 조사, 분석, 가능, 상품, 작성, 지원, 빅데이터 
+Topic 9 Top Words:
+     Highest Prob: 운영, 관리, 사업, 기획, IT, 역량, 보안, 프로젝트, 플랫폼, 고객 
+     FREX: 사업, IT, 보안, 기획, 대응, 컨설팅, 관리, 운영, 수립, 전략_수립 
+     Lift: 보안, IT, 대응, 디지털, 사업, 컨설팅, 활동, ICT, 기획, 전략_수립 
+     Score: 보안, IT, 사업, 기획, ICT, 운영, 관리, 영업, 수립, 자격증 
+Topic 10 Top Words:
+     Highest Prob: 데이터, 개발, 운영, 구축, 시스템, 설계, 파이프라인, 환경, 플랫폼, 기반 
+     FREX: 파이프라인, 클라우드, 구축, AWS, 환경, 용량, 운영, 데이터, Data, 엔지니어_컴퓨터공학 
+     Lift: 엔지니어_컴퓨터공학, Kafka, 파이프라인, 클라우드, Hadoop, 용량, AWS, Kubernetes, 분산, Airflow 
+     Score: 엔지니어_컴퓨터공학, 데이터, 운영, 파이프라인, 구축, Kafka, 시스템, 클라우드, AWS, Spark 
+Topic 11 Top Words:
+     Highest Prob: 데이터, 분석, 데이터_분석, 컴퓨터공학, 모델링, 통계, 활용, 통계학, 능력, 분야 
+     FREX: 모델링, 통계학, 통계, 컴퓨터공학, 예측, 데이터_분석, 데이터사이언티스트, 산업공학, 분석, 수학 
+     Lift: 통계학, 데이터사이언티스트, 예측, 모델링, 과학, 사이언스, 통계, 산업공학, 수학, 컴퓨터공학 
+     Score: 통계학, 데이터_분석, 통계, 예측, 데이터, 모델링, 분석, 데이터사이언티스트, 과학, 컴퓨터공학 </code></pre>
+</div>
+</div>
+<div class="cell" data-hash="STM_cache/html/unnamed-chunk-19_5170abf43f7f9affa65bb6bc407b0462">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(stm_model1,<span class="at">type=</span><span class="st">'summary'</span>,<span class="at">labeltype =</span> <span class="st">'frex'</span>,<span class="at">n=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="STM_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell" data-hash="STM_cache/html/unnamed-chunk-20_d0948f09e8fb0aff79722a20aad51b1d">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># STM 모델에서 labelTopics() 함수 실행</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>topic_labels <span class="ot">&lt;-</span> <span class="fu">labelTopics</span>(stm_model1, <span class="at">n =</span> <span class="dv">10</span>)</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 토픽의 개수 추출 (토픽 개수에 맞춰)</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>num_topics <span class="ot">&lt;-</span> <span class="fu">nrow</span>(topic_labels<span class="sc">$</span>prob)</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 토픽 비중 계산 (각 토픽의 평균 비중을 계산)</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>topic_proportions <span class="ot">&lt;-</span> <span class="fu">colMeans</span>(stm_model1<span class="sc">$</span>theta) <span class="sc">*</span><span class="dv">100</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 각 토픽에 대한 상위 단어를 데이터프레임으로 변환</span></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>topic_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">Topic =</span> <span class="dv">1</span><span class="sc">:</span>num_topics,</span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">Proportion =</span> topic_proportions,  <span class="co"># 각 토픽의 비중 추가</span></span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">Highest_Prob =</span> <span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span>num_topics, <span class="cf">function</span>(i) <span class="fu">paste</span>(topic_labels<span class="sc">$</span>prob[i, ], <span class="at">collapse =</span> <span class="st">", "</span>)),</span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">FREX =</span> <span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span>num_topics, <span class="cf">function</span>(i) <span class="fu">paste</span>(topic_labels<span class="sc">$</span>frex[i, ], <span class="at">collapse =</span> <span class="st">", "</span>)),</span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">Lift =</span> <span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span>num_topics, <span class="cf">function</span>(i) <span class="fu">paste</span>(topic_labels<span class="sc">$</span>lift[i, ], <span class="at">collapse =</span> <span class="st">", "</span>)),</span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">Score =</span> <span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span>num_topics, <span class="cf">function</span>(i) <span class="fu">paste</span>(topic_labels<span class="sc">$</span>score[i, ], <span class="at">collapse =</span> <span class="st">", "</span>))</span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a><span class="co"># 데이터프레임 확인</span></span>
+<span id="cb32-21"><a href="#cb32-21" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(topic_data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Topic Proportion
+1     1   8.427351
+2     2   7.402545
+3     3   9.839896
+4     4  10.526301
+5     5   9.748065
+6     6   8.791414
+                                                                                   Highest_Prob
+1 모델, 기계학습, 학습, 딥러닝, 머신러닝_엔지니어, 프레임_워크, Tensorflow, PyTorch, 개발, 사용
+2                                    지원, 우대, 졸업, 사유, 채용, 경우, 취업, 입사, 국가, 직무
+3                       연구, 분야, 딥러닝, 논문, 알고리즘, 리서치, 컴퓨터_비전, 영상, 이상, AI
+4                             기술, AI, 능력, 프로젝트, 다양, 협업, 이해, 고객, 문제_해결, 문제
+5                      데이터, 데이터_분석, 분석, 활용, 비즈니스, 기반, 서비스, SQL, 능력, 지표
+6                                개발, 이상, 보유자, 경험자, 경력, 시스템, 기술, SW, 물류, 검증
+                                                                                       FREX
+1 기계학습, 모델, 학습, PyTorch, AIML, 프레임_워크, Engineering, 배포, Computer, Tensorflow
+2                              취업, 채용, 서류, 경우, 의거, 입사, 장애인, 법령, 사유, 졸업
+3      연구, 영상, 컴퓨터_비전, 의료, 논문, 학회, 컴퓨터공학_전자공학, 딥러닝, 알고리즘, 3D
+4                      새롭, 협업, 문제, 디자인, 원활, PMPO, 커뮤니케이션, 해결, 게임, 제작
+5                   지표, 시각, 비즈니스, 대시보드, BI, 인사이트, 추출, AB, 의사_결정, 가설
+6                            경험자, 보유자, 물류, 제어, SW, 경력, 시스템, 전자, 이상, 개발
+                                                                                Lift
+1     Science, Computer, GPU, Engineering, 기계학습, 수상, AIML, PyTorch, 배포, 모델
+2                         서류, 허위, 취업, 건강, 기재, 의거, 취소, 채용, 이내, 법령
+3 박사, 의료, 영상, 3D, 기계공학, 학회, 컴퓨터_비전, 연구, 컴퓨터공학_전자공학, 저널
+4               PMPO, 이해관계자, 디자인, 시키, 혁신, 기회, 원활, 뛰어나, 새롭, 역할
+5             Tableau, AB, BI, 대시보드, 인사이트, 지표, 가설, 시각, 의사_결정, 추출
+6                     물류, 제어, 경험자, 보유자, 전자, SW, 전기, 계열, 학력, 경력자
+                                                                                          Score
+1 Science, 모델, 기계학습, PyTorch, 딥러닝, Tensorflow, Computer, 학습, 머신러닝_엔지니어, 서빙
+2                                    건강, 채용, 취업, 서류, 입사, 경우, 의거, 법령, 취소, 허위
+3                         박사, 연구, 딥러닝, 논문, 컴퓨터_비전, 영상, 의료, 3D, 알고리즘, 학회
+4                                 PMPO, AI, 게임, 기술, 고객, 새롭, 협업, 문제, 문제_해결, 제품
+5                     Tableau, 데이터_분석, 지표, 대시보드, BI, AB, SQL, 데이터, 비즈니스, 가설
+6                                물류, 보유자, 경험자, 제어, SW, 개발, 시스템, 전자, 전기, 계열</code></pre>
+</div>
+</div>
+<div class="cell" data-hash="STM_cache/html/unnamed-chunk-21_e8fcb2c47fe02e1b87784397585042b9">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.xlsx</span>(topic_data, <span class="at">file =</span> <span class="st">"STM_Topic_Model_Results.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="효과-추정" class="level3">
+<h3 class="anchored" data-anchor-id="효과-추정">효과 추정</h3>
+<div class="cell" data-hash="STM_cache/html/unnamed-chunk-22_d795104f224868938f50467cfa3a63b1">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>m1_K <span class="ot">&lt;-</span> stm_model1<span class="sc">$</span>settings<span class="sc">$</span>dim<span class="sc">$</span>K</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>stm_effect_model <span class="ot">&lt;-</span>  <span class="fu">estimateEffect</span>(<span class="dv">1</span><span class="sc">:</span>m1_K <span class="sc">~</span>Degree<span class="sc">+</span>Experience<span class="sc">+</span>STEM,</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>                                 stm_model1, <span class="at">meta =</span> out<span class="sc">$</span>meta, <span class="at">uncertainty =</span> <span class="st">"Global"</span>,<span class="at">prior=</span><span class="fl">1e-5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="STM_cache/html/unnamed-chunk-23_59a7c152f383fd251d194eba78c395be">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 토픽 모델의 토픽 분포(theta)로부터 데이터 프레임 생성</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>topic_document <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(stm_model1[[<span class="st">"theta"</span>]])</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 추가 메타 데이터 컬럼 할당</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>topic_document<span class="sc">$</span>class <span class="ot">&lt;-</span> out<span class="sc">$</span>meta<span class="sc">$</span>Degree</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 토픽 개수를 기반으로 이름 생성</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>num_topics <span class="ot">&lt;-</span> <span class="fu">ncol</span>(stm_model1[[<span class="st">"theta"</span>]])  <span class="co"># 토픽 모델의 토픽 개수</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>topic_names <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"topic"</span>, <span class="dv">1</span><span class="sc">:</span>num_topics, <span class="at">sep =</span> <span class="st">""</span>)  <span class="co"># 토픽 이름 생성</span></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 새로운 컬럼 이름 설정</span></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(topic_document) <span class="ot">&lt;-</span> <span class="fu">c</span>(topic_names, <span class="st">"Degree"</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="STM_cache/html/unnamed-chunk-24_22296c048658db707b8f8ca6c7d7bd34">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>topic_document_long <span class="ot">&lt;-</span>  </span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>topic_document <span class="sc">%&gt;%</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"topic"</span>),</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"topic"</span>,</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"distribution"</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">topic =</span> <span class="fu">factor</span>(topic, <span class="at">levels =</span> <span class="fu">paste0</span>(<span class="st">"topic"</span>, <span class="dv">1</span><span class="sc">:</span>m1_K))</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="STM_cache/html/unnamed-chunk-25_d8fd1371abb15b5de1c2ab53396b2133">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxplot 시각화: 학위별로 토픽의 분포 표시</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(topic_document_long, <span class="fu">aes</span>(<span class="at">x =</span> topic, <span class="at">y =</span> distribution, <span class="at">fill =</span> Degree)) <span class="sc">+</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Topic Distribution by Degree"</span>, <span class="at">x =</span> <span class="st">"Topic"</span>, <span class="at">y =</span> <span class="st">"Distribution"</span>) <span class="sc">+</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Degree, <span class="at">scales =</span> <span class="st">"free"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="STM_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell" data-hash="STM_cache/html/unnamed-chunk-26_e738ee9188b49063275cbb1fb747afbf">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(stm_effect_model, <span class="at">topics=</span> <span class="dv">1</span><span class="sc">:</span>m1_K)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+estimateEffect(formula = 1:m1_K ~ Degree + Experience + STEM, 
+    stmobj = stm_model1, metadata = out$meta, uncertainty = "Global", 
+    prior = 1e-05)
+
+
+Topic 1:
+
+Coefficients:
+                             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                  0.059844   0.008024   7.458 1.37e-13 ***
+Degree학사 졸 이상          -0.020144   0.007481  -2.693  0.00716 ** 
+Degree대학원 졸 이상        -0.018957   0.010747  -1.764  0.07790 .  
+Experience주니어급(1-3년차) -0.003079   0.007730  -0.398  0.69040    
+Experience중간/시니어급     -0.003901   0.009496  -0.411  0.68131    
+STEMSTEM                     0.065655   0.007080   9.273  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+
+Topic 2:
+
+Coefficients:
+                             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                  0.133559   0.010228  13.058  &lt; 2e-16 ***
+Degree학사 졸 이상           0.067431   0.009406   7.169 1.11e-12 ***
+Degree대학원 졸 이상         0.017697   0.013754   1.287    0.198    
+Experience주니어급(1-3년차) -0.081001   0.010144  -7.985 2.50e-15 ***
+Experience중간/시니어급     -0.093319   0.011966  -7.799 1.06e-14 ***
+STEMSTEM                    -0.078784   0.008874  -8.878  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+
+Topic 3:
+
+Coefficients:
+                             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                  0.025640   0.008381   3.059  0.00225 ** 
+Degree학사 졸 이상           0.020453   0.007989   2.560  0.01055 *  
+Degree대학원 졸 이상         0.145603   0.011873  12.263  &lt; 2e-16 ***
+Experience주니어급(1-3년차) -0.012268   0.008464  -1.449  0.14741    
+Experience중간/시니어급     -0.001924   0.010357  -0.186  0.85262    
+STEMSTEM                     0.072499   0.007949   9.121  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+
+Topic 4:
+
+Coefficients:
+                             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                  0.134251   0.009239  14.532  &lt; 2e-16 ***
+Degree학사 졸 이상          -0.033379   0.009160  -3.644 0.000276 ***
+Degree대학원 졸 이상        -0.061995   0.012550  -4.940 8.56e-07 ***
+Experience주니어급(1-3년차) -0.006453   0.009401  -0.686 0.492531    
+Experience중간/시니어급      0.006088   0.011084   0.549 0.582885    
+STEMSTEM                    -0.005615   0.008511  -0.660 0.509517    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+
+Topic 5:
+
+Coefficients:
+                            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                  0.19242    0.01117  17.219  &lt; 2e-16 ***
+Degree학사 졸 이상          -0.11504    0.01073 -10.719  &lt; 2e-16 ***
+Degree대학원 졸 이상        -0.12731    0.01378  -9.237  &lt; 2e-16 ***
+Experience주니어급(1-3년차)  0.03613    0.01095   3.300 0.000987 ***
+Experience중간/시니어급      0.02947    0.01270   2.320 0.020463 *  
+STEMSTEM                    -0.06268    0.01002  -6.254 5.01e-10 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+
+Topic 6:
+
+Coefficients:
+                              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                  0.0407071  0.0085328   4.771 1.99e-06 ***
+Degree학사 졸 이상           0.0602415  0.0086857   6.936 5.65e-12 ***
+Degree대학원 졸 이상         0.1020083  0.0127225   8.018 1.94e-15 ***
+Experience주니어급(1-3년차) -0.0035663  0.0097045  -0.367   0.7133    
+Experience중간/시니어급      0.0273281  0.0119724   2.283   0.0226 *  
+STEMSTEM                    -0.0007212  0.0083191  -0.087   0.9309    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+
+Topic 7:
+
+Coefficients:
+                            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                 0.070459   0.008625   8.170 5.83e-16 ***
+Degree학사 졸 이상          0.013115   0.008400   1.561  0.11862    
+Degree대학원 졸 이상        0.059250   0.013322   4.448 9.23e-06 ***
+Experience주니어급(1-3년차) 0.018809   0.008733   2.154  0.03140 *  
+Experience중간/시니어급     0.006891   0.010847   0.635  0.52532    
+STEMSTEM                    0.022133   0.008171   2.709  0.00682 ** 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+
+Topic 8:
+
+Coefficients:
+                             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                  0.091770   0.004773  19.226  &lt; 2e-16 ***
+Degree학사 졸 이상           0.005862   0.004324   1.356   0.1753    
+Degree대학원 졸 이상        -0.009375   0.005489  -1.708   0.0878 .  
+Experience주니어급(1-3년차) -0.020477   0.004429  -4.624 4.04e-06 ***
+Experience중간/시니어급     -0.020506   0.005110  -4.013 6.25e-05 ***
+STEMSTEM                    -0.057642   0.004131 -13.953  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+
+Topic 9:
+
+Coefficients:
+                             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                  0.076293   0.007988   9.551  &lt; 2e-16 ***
+Degree학사 졸 이상           0.063044   0.007905   7.976  2.7e-15 ***
+Degree대학원 졸 이상         0.021918   0.010591   2.069  0.03866 *  
+Experience주니어급(1-3년차)  0.024235   0.009042   2.680  0.00742 ** 
+Experience중간/시니어급      0.007939   0.009433   0.842  0.40012    
+STEMSTEM                    -0.070867   0.007640  -9.276  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+
+Topic 10:
+
+Coefficients:
+                            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                  0.14632    0.01196  12.235  &lt; 2e-16 ***
+Degree학사 졸 이상          -0.07620    0.01099  -6.934 5.72e-12 ***
+Degree대학원 졸 이상        -0.15127    0.01444 -10.474  &lt; 2e-16 ***
+Experience주니어급(1-3년차)  0.03969    0.01250   3.175  0.00153 ** 
+Experience중간/시니어급      0.02327    0.01419   1.639  0.10132    
+STEMSTEM                     0.05180    0.01113   4.656 3.46e-06 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+
+Topic 11:
+
+Coefficients:
+                            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                 0.028996   0.007209   4.022    6e-05 ***
+Degree학사 졸 이상          0.014326   0.007286   1.966   0.0494 *  
+Degree대학원 졸 이상        0.021923   0.011296   1.941   0.0524 .  
+Experience주니어급(1-3년차) 0.007907   0.007150   1.106   0.2689    
+Experience중간/시니어급     0.018555   0.009508   1.952   0.0511 .  
+STEMSTEM                    0.064120   0.006190  10.359   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<section id="학력-효과" class="level5">
+<h5 class="anchored" data-anchor-id="학력-효과">학력 효과</h5>
+<div class="cell" data-hash="STM_cache/html/unnamed-chunk-27_5565631b4639293ab364da27db32a24e">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.estimateEffect</span>(stm_effect_model, <span class="at">covariate =</span> <span class="st">"Degree"</span>, </span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">topics =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>m1_K), <span class="at">method =</span> <span class="st">"difference"</span>,</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">model =</span> stm_model1, <span class="co"># to show labels alongside</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">cov.value1 =</span> <span class="st">"학사 졸 이상"</span>, <span class="at">cov.value2 =</span> <span class="st">"대학원 졸 이상"</span>,</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">xlab =</span> <span class="st">"대학원 졸 이상 &lt;------------------------&gt; 학사 졸 이상"</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span>.<span class="dv">6</span>, .<span class="dv">6</span>),</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">labeltype =</span> <span class="st">"frex"</span>, <span class="at">n =</span> <span class="dv">7</span>, </span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>                    <span class="at">width =</span> <span class="dv">100</span>,  <span class="at">verbose.labels =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="STM_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell" data-hash="STM_cache/html/unnamed-chunk-28_e2f4f0593e224e942b73df2419df9816">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.estimateEffect</span>(stm_effect_model, <span class="at">covariate =</span> <span class="st">"Degree"</span>, </span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">topics =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>m1_K), <span class="at">method =</span> <span class="st">"difference"</span>,</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">model =</span> stm_model1, <span class="co"># to show labels alongside</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">cov.value1 =</span> <span class="st">"학력무관"</span>, <span class="at">cov.value2 =</span> <span class="st">"대학원 졸 이상"</span>,</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">xlab =</span> <span class="st">"대학원 졸 이상 &lt;------------------------&gt; 학력무관"</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span>.<span class="dv">6</span>, .<span class="dv">6</span>),</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">labeltype =</span> <span class="st">"frex"</span>, <span class="at">n =</span> <span class="dv">7</span>, </span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>                    <span class="at">width =</span> <span class="dv">100</span>,  <span class="at">verbose.labels =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="STM_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell" data-hash="STM_cache/html/unnamed-chunk-29_af328b1846b36049d288ce427cdd2b51">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))  <span class="co"># 2행 5열로 subplot 배치</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 명목변수의 세 가지 수준에 대한 레이블 설정</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>level_labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"학력무관"</span>, <span class="st">"학사졸 이상"</span>, <span class="st">"대학원 졸 이상"</span>)</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Degree 변수에 따라 범례를 커스터마이즈하여 그래프 생성</span></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot.estimateEffect</span>(stm_effect_model, <span class="at">covariate =</span> <span class="st">"Degree"</span>, </span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>                      <span class="at">topics =</span> i, <span class="at">method =</span> <span class="st">"pointestimate"</span>, </span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>                      <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">"Topic"</span>, i), </span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>                      <span class="at">labeltype =</span> <span class="st">"custom"</span>, <span class="at">custom.labels =</span> level_labels)  <span class="co"># 수준 레이블로 범례 커스터마이즈</span></span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="STM_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="STM_files/figure-html/unnamed-chunk-29-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="STM_files/figure-html/unnamed-chunk-29-3.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="경력-효과" class="level5">
+<h5 class="anchored" data-anchor-id="경력-효과">경력 효과</h5>
+<div class="cell" data-hash="STM_cache/html/unnamed-chunk-30_9eafa1f43de383c0585662a4173a7335">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))  <span class="co"># 2행 5열로 subplot 배치</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 명목변수의 세 가지 수준에 대한 레이블 설정</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>level_labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'경력무관'</span>, <span class="st">'주니어급(1-3년차)'</span>, <span class="st">'중간/시니어급'</span>)</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Degree 변수에 따라 범례를 커스터마이즈하여 그래프 생성</span></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot.estimateEffect</span>(stm_effect_model, <span class="at">covariate =</span> <span class="st">"Experience"</span>, </span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>                      <span class="at">topics =</span> i, <span class="at">method =</span> <span class="st">"pointestimate"</span>, </span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>                      <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">"Topic"</span>, i), </span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>                      <span class="at">labeltype =</span> <span class="st">"custom"</span>, <span class="at">custom.labels =</span> level_labels)  <span class="co"># 수준 레이블로 범례 커스터마이즈</span></span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="STM_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="STM_files/figure-html/unnamed-chunk-30-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="STM_files/figure-html/unnamed-chunk-30-3.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="전공-효과" class="level5">
+<h5 class="anchored" data-anchor-id="전공-효과">전공 효과</h5>
+<div class="cell" data-hash="STM_cache/html/unnamed-chunk-31_3c86aaea3f6237077bfd36fb3950e433">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.estimateEffect</span>(stm_effect_model, <span class="at">covariate =</span> <span class="st">"STEM"</span>, </span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">topics =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>m1_K), <span class="at">method =</span> <span class="st">"difference"</span>,</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">model =</span> stm_model1, <span class="co"># to show labels alongside</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">cov.value1 =</span> <span class="st">"STEM"</span>, <span class="at">cov.value2 =</span> <span class="st">"non_STEM"</span>,</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">xlab =</span> <span class="st">"non_STEM &lt;------------------------&gt; STEM"</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span>.<span class="dv">6</span>, .<span class="dv">6</span>),</span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">labeltype =</span> <span class="st">"frex"</span>, <span class="at">n =</span> <span class="dv">7</span>, </span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>                    <span class="at">width =</span> <span class="dv">100</span>,  <span class="at">verbose.labels =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="STM_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="문서별-토픽-비중-ai-스킬-매칭" class="level3">
+<h3 class="anchored" data-anchor-id="문서별-토픽-비중-ai-스킬-매칭">문서별 토픽 비중 (AI 스킬 매칭)</h3>
+<div class="cell" data-hash="STM_cache/html/unnamed-chunk-32_e7a2bdbc77998abf11340da735e39e56">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># STM 모델에서 theta 행렬 추출 (각 문서의 토픽 비중)</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>theta_matrix <span class="ot">&lt;-</span> stm_model1<span class="sc">$</span>theta  <span class="co"># 각 행은 문서, 각 열은 토픽에 대한 비중</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="co"># theta 행렬을 데이터프레임으로 변환</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>theta_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(theta_matrix)</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 각 열의 이름을 토픽 번호로 설정 (예: "Topic 1", "Topic 2", ..., "Topic 11")</span></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(theta_df) <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"Topic"</span>, <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(theta_df), <span class="at">sep =</span> <span class="st">" "</span>)</span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 문서 ID를 추가 (선택 사항: 문서 번호 추가)</span></span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>theta_df<span class="sc">$</span>Document <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(theta_df)</span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 결과 확인</span></span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(theta_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      Topic 1     Topic 2     Topic 3    Topic 4     Topic 5     Topic 6
+1 0.211125346 0.008542165 0.128714061 0.15877907 0.009846256 0.009219140
+2 0.004257993 0.737048328 0.011432210 0.08013756 0.013612074 0.020721010
+3 0.003972156 0.741597340 0.007228872 0.08337844 0.026735708 0.013926465
+4 0.009485072 0.006310621 0.010008498 0.21130518 0.343488106 0.024404255
+5 0.052178763 0.009269816 0.024001946 0.03334752 0.007896664 0.197408938
+6 0.011401490 0.002661137 0.001721275 0.08798758 0.084672436 0.002520249
+     Topic 7    Topic 8    Topic 9    Topic 10    Topic 11 Document
+1 0.34788551 0.07132632 0.01433178 0.016722536 0.023507809        1
+2 0.01719619 0.05730075 0.04299134 0.008007348 0.007295191        2
+3 0.01353350 0.05063381 0.04017648 0.009518810 0.009298424        3
+4 0.04932443 0.02120764 0.13945814 0.025131918 0.159876143        4
+5 0.29550105 0.04168472 0.08914209 0.237379870 0.012188615        5
+6 0.01089915 0.03451250 0.01292545 0.743642990 0.007055749        6</code></pre>
+</div>
+</div>
+<div class="cell" data-hash="STM_cache/html/unnamed-chunk-33_437b006595757e07908456ee4af89ad1">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># STM 모델에서 theta 행렬 추출 (각 문서의 토픽 비중)</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>theta_matrix <span class="ot">&lt;-</span> stm_model1<span class="sc">$</span>theta  <span class="co"># 각 행은 문서, 각 열은 토픽에 대한 비중</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 토픽별로 매핑된 스킬과 가중치를 데이터프레임으로 정의</span></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>topic_skill_mapping <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Topic =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">11</span>,</span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">Skills =</span> <span class="fu">c</span>(<span class="st">"Machine Learning, Neural Networks"</span>,  <span class="co"># Topic 1</span></span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>             <span class="st">""</span>,                                    <span class="co"># Topic 2 (매핑 없음)</span></span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Visual Image Recognition, Neural Networks"</span>,  <span class="co"># Topic 3</span></span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Artificial Intelligence"</span>,             <span class="co"># Topic 4</span></span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Machine Learning"</span>,                    <span class="co"># Topic 5</span></span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Robotics"</span>,                            <span class="co"># Topic 6</span></span>
+<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Generative Artificial Intelligence, Natural Language Processing (NLP)"</span>,  <span class="co"># Topic 7</span></span>
+<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a>             <span class="st">""</span>,                    <span class="co"># Topic 8</span></span>
+<span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Artificial Intelligence"</span>,     <span class="co"># Topic 9</span></span>
+<span id="cb48-16"><a href="#cb48-16" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Machine Learning"</span>,                    <span class="co"># Topic 10</span></span>
+<span id="cb48-17"><a href="#cb48-17" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Machine Learning"</span>),                   <span class="co"># Topic 11</span></span>
+<span id="cb48-18"><a href="#cb48-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">Weights =</span> <span class="fu">c</span>(<span class="fl">0.5</span>,    <span class="co"># Topic 1 (2개의 스킬)</span></span>
+<span id="cb48-19"><a href="#cb48-19" aria-hidden="true" tabindex="-1"></a>              <span class="dv">0</span>,      <span class="co"># Topic 2 (매핑 없음)</span></span>
+<span id="cb48-20"><a href="#cb48-20" aria-hidden="true" tabindex="-1"></a>              <span class="fl">0.5</span>,    <span class="co"># Topic 3 (2개의 스킬)</span></span>
+<span id="cb48-21"><a href="#cb48-21" aria-hidden="true" tabindex="-1"></a>              <span class="dv">1</span>,      <span class="co"># Topic 4 (1개의 스킬)</span></span>
+<span id="cb48-22"><a href="#cb48-22" aria-hidden="true" tabindex="-1"></a>              <span class="dv">1</span>,      <span class="co"># Topic 5 (1개의 스킬)</span></span>
+<span id="cb48-23"><a href="#cb48-23" aria-hidden="true" tabindex="-1"></a>              <span class="dv">1</span>,      <span class="co"># Topic 6 (1개의 스킬)</span></span>
+<span id="cb48-24"><a href="#cb48-24" aria-hidden="true" tabindex="-1"></a>              <span class="fl">0.5</span>,    <span class="co"># Topic 7 (2개의 스킬)</span></span>
+<span id="cb48-25"><a href="#cb48-25" aria-hidden="true" tabindex="-1"></a>              <span class="dv">0</span>,      <span class="co"># Topic 8 (1개의 스킬)</span></span>
+<span id="cb48-26"><a href="#cb48-26" aria-hidden="true" tabindex="-1"></a>              <span class="dv">1</span>,      <span class="co"># Topic 9 (1개의 스킬)</span></span>
+<span id="cb48-27"><a href="#cb48-27" aria-hidden="true" tabindex="-1"></a>              <span class="dv">1</span>,      <span class="co"># Topic 10 (1개의 스킬)</span></span>
+<span id="cb48-28"><a href="#cb48-28" aria-hidden="true" tabindex="-1"></a>              <span class="dv">1</span>       <span class="co"># Topic 11 (1개의 스킬)</span></span>
+<span id="cb48-29"><a href="#cb48-29" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb48-30"><a href="#cb48-30" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb48-31"><a href="#cb48-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-32"><a href="#cb48-32" aria-hidden="true" tabindex="-1"></a><span class="co"># 각 문서별 스킬 비중 계산</span></span>
+<span id="cb48-33"><a href="#cb48-33" aria-hidden="true" tabindex="-1"></a>skill_proportions <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb48-34"><a href="#cb48-34" aria-hidden="true" tabindex="-1"></a>  <span class="at">Document =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(theta_matrix)</span>
+<span id="cb48-35"><a href="#cb48-35" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb48-36"><a href="#cb48-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-37"><a href="#cb48-37" aria-hidden="true" tabindex="-1"></a><span class="co"># 스킬 리스트</span></span>
+<span id="cb48-38"><a href="#cb48-38" aria-hidden="true" tabindex="-1"></a>skills <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Machine Learning"</span>, <span class="st">"Neural Networks"</span>, <span class="st">"Visual Image Recognition"</span>, <span class="st">"Artificial Intelligence"</span>,</span>
+<span id="cb48-39"><a href="#cb48-39" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Robotics"</span>, <span class="st">"Generative Artificial Intelligence"</span>, <span class="st">"Natural Language Processing (NLP)"</span>)</span>
+<span id="cb48-40"><a href="#cb48-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-41"><a href="#cb48-41" aria-hidden="true" tabindex="-1"></a><span class="co"># 스킬에 대한 비중 계산을 위한 초기화</span></span>
+<span id="cb48-42"><a href="#cb48-42" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (skill <span class="cf">in</span> skills) {</span>
+<span id="cb48-43"><a href="#cb48-43" aria-hidden="true" tabindex="-1"></a>  skill_proportions[[skill]] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb48-44"><a href="#cb48-44" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb48-45"><a href="#cb48-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-46"><a href="#cb48-46" aria-hidden="true" tabindex="-1"></a><span class="co"># 각 문서에 대해 스킬 비중 계산</span></span>
+<span id="cb48-47"><a href="#cb48-47" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (doc <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(theta_matrix)) {</span>
+<span id="cb48-48"><a href="#cb48-48" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (topic <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(theta_matrix)) {</span>
+<span id="cb48-49"><a href="#cb48-49" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (topic_skill_mapping<span class="sc">$</span>Skills[topic] <span class="sc">!=</span> <span class="st">""</span>) {</span>
+<span id="cb48-50"><a href="#cb48-50" aria-hidden="true" tabindex="-1"></a>      skill_list <span class="ot">&lt;-</span> <span class="fu">strsplit</span>(topic_skill_mapping<span class="sc">$</span>Skills[topic], <span class="st">", "</span>)[[<span class="dv">1</span>]]</span>
+<span id="cb48-51"><a href="#cb48-51" aria-hidden="true" tabindex="-1"></a>      weight <span class="ot">&lt;-</span> topic_skill_mapping<span class="sc">$</span>Weights[topic]</span>
+<span id="cb48-52"><a href="#cb48-52" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb48-53"><a href="#cb48-53" aria-hidden="true" tabindex="-1"></a>      <span class="co"># 각 스킬에 대해 비중 계산</span></span>
+<span id="cb48-54"><a href="#cb48-54" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> (skill <span class="cf">in</span> skill_list) {</span>
+<span id="cb48-55"><a href="#cb48-55" aria-hidden="true" tabindex="-1"></a>        skill_proportions[doc, skill] <span class="ot">&lt;-</span> skill_proportions[doc, skill] <span class="sc">+</span> theta_matrix[doc, topic] <span class="sc">*</span> weight</span>
+<span id="cb48-56"><a href="#cb48-56" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb48-57"><a href="#cb48-57" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb48-58"><a href="#cb48-58" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb48-59"><a href="#cb48-59" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb48-60"><a href="#cb48-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-61"><a href="#cb48-61" aria-hidden="true" tabindex="-1"></a><span class="co"># 결과 확인</span></span>
+<span id="cb48-62"><a href="#cb48-62" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(skill_proportions)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Document Machine Learning Neural Networks Visual Image Recognition
+1        1       0.15563927     0.169919703             0.0643570303
+2        2       0.03104361     0.007845102             0.0057161052
+3        3       0.04753902     0.005600514             0.0036144360
+4        4       0.53323870     0.009746785             0.0050042490
+5        5       0.28355453     0.038090354             0.0120009731
+6        6       0.84107192     0.006561383             0.0008606375
+  Artificial Intelligence    Robotics Generative Artificial Intelligence
+1               0.1731109 0.009219140                        0.173942756
+2               0.1231289 0.020721010                        0.008598097
+3               0.1235549 0.013926465                        0.006766749
+4               0.3507633 0.024404255                        0.024662214
+5               0.1224896 0.197408938                        0.147750526
+6               0.1009130 0.002520249                        0.005449573
+  Natural Language Processing (NLP)
+1                       0.173942756
+2                       0.008598097
+3                       0.006766749
+4                       0.024662214
+5                       0.147750526
+6                       0.005449573</code></pre>
+</div>
+</div>
+<div class="cell" data-hash="STM_cache/html/unnamed-chunk-34_6b9afea14934b41fe546115a24e92e09">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.xlsx</span>(skill_proportions,<span class="st">"skill_proportions.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="STM_cache/html/unnamed-chunk-35_24643031855fe428845aa6a9e6b68a59">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 각 스킬의 중요도를 합산 (전체 문서에서 각 스킬의 비중 합계)</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>skill_importance <span class="ot">&lt;-</span> <span class="fu">colSums</span>(skill_proportions[ , <span class="sc">-</span><span class="dv">1</span>])  <span class="co"># Document 열 제외</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 데이터프레임으로 변환</span></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>skill_importance_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Skill =</span> <span class="fu">names</span>(skill_importance), <span class="at">Importance =</span> skill_importance)</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 막대 그래프로 시각화</span></span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(skill_importance_df, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(Skill, Importance), <span class="at">y =</span> Importance, <span class="at">fill =</span> Skill)) <span class="sc">+</span></span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span>  <span class="co"># 가로로 시각화</span></span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Skill"</span>, <span class="at">y =</span> <span class="st">"Importance"</span>, <span class="at">title =</span> <span class="st">"AI Skills Importance Across All Documents"</span>) <span class="sc">+</span></span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 고해상도 PNG로 저장</span></span>
+<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"AI_Skills_Importance_High_Res.png"</span>, <span class="at">plot =</span> p, <span class="at">width =</span> <span class="dv">10</span>, <span class="at">height =</span> <span class="dv">6</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="STM_cache/html/unnamed-chunk-36_ace9d18fc21769733880500fe56ccbce">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 파이 차트 시각화</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(skill_importance_df, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> Importance, <span class="at">fill =</span> Skill)) <span class="sc">+</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="st">"y"</span>, <span class="at">start =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"AI Skills Importance Across All Documents"</span>) <span class="sc">+</span></span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span>  <span class="co"># 불필요한 요소 제거</span></span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"right"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="STM_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell" data-hash="STM_cache/html/unnamed-chunk-37_b53ee9edaa149b3139dbd89b8ae46f83">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># df 변수에서 Degree, Experience, STEM 정보 추가</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="co"># skill_proportions에 df의 문서별 Degree, Experience, STEM 정보를 결합</span></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>skill_proportions<span class="sc">$</span>Degree <span class="ot">&lt;-</span> df<span class="sc">$</span>Degree</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>skill_proportions<span class="sc">$</span>Experience <span class="ot">&lt;-</span> df<span class="sc">$</span>Experience</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>skill_proportions<span class="sc">$</span>STEM <span class="ot">&lt;-</span> df<span class="sc">$</span>STEM</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 결과 확인</span></span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(skill_proportions)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Document Machine Learning Neural Networks Visual Image Recognition
+1        1       0.15563927     0.169919703             0.0643570303
+2        2       0.03104361     0.007845102             0.0057161052
+3        3       0.04753902     0.005600514             0.0036144360
+4        4       0.53323870     0.009746785             0.0050042490
+5        5       0.28355453     0.038090354             0.0120009731
+6        6       0.84107192     0.006561383             0.0008606375
+  Artificial Intelligence    Robotics Generative Artificial Intelligence
+1               0.1731109 0.009219140                        0.173942756
+2               0.1231289 0.020721010                        0.008598097
+3               0.1235549 0.013926465                        0.006766749
+4               0.3507633 0.024404255                        0.024662214
+5               0.1224896 0.197408938                        0.147750526
+6               0.1009130 0.002520249                        0.005449573
+  Natural Language Processing (NLP)         Degree        Experience     STEM
+1                       0.173942756 대학원 졸 이상          경력무관 non_STEM
+2                       0.008598097       학력무관          경력무관 non_STEM
+3                       0.006766749       학력무관          경력무관 non_STEM
+4                       0.024662214       학력무관 주니어급(1-3년차)     STEM
+5                       0.147750526   학사 졸 이상 주니어급(1-3년차) non_STEM
+6                       0.005449573       학력무관          경력무관 non_STEM</code></pre>
+</div>
+</div>
+<div class="cell" data-hash="STM_cache/html/unnamed-chunk-38_78b7d8e8cd3d44e5ec79a34735c1d355">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 스킬 비중 데이터를 long 형식으로 변환</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>skill_long <span class="ot">&lt;-</span> skill_proportions <span class="sc">%&gt;%</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span><span class="fu">c</span>(Document, Degree, Experience, STEM), <span class="at">names_to =</span> <span class="st">"Skill"</span>, <span class="at">values_to =</span> <span class="st">"Importance"</span>)</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 각 Degree, Experience, STEM에 따른 스킬 중요도를 평균 계산</span></span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>skill_summary <span class="ot">&lt;-</span> skill_long <span class="sc">%&gt;%</span></span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Degree, Experience, STEM, Skill) <span class="sc">%&gt;%</span></span>
+<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Average_Importance =</span> <span class="fu">mean</span>(Importance, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'Degree', 'Experience', 'STEM'. You can
+override using the `.groups` argument.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.xlsx</span>(skill_summary,<span class="st">'skill_summary.xlsx'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="STM_cache/html/unnamed-chunk-39_1be1ed1aff132e82ebc2754120af8adf">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Degree에 따른 스킬 중요도 시각화</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(skill_summary, <span class="fu">aes</span>(<span class="at">x =</span> Skill, <span class="at">y =</span> Average_Importance, <span class="at">fill =</span> Degree)) <span class="sc">+</span></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"AI Skill Importance by Degree"</span>, <span class="at">x =</span> <span class="st">"Skill"</span>, <span class="at">y =</span> <span class="st">"Average Importance"</span>) <span class="sc">+</span></span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="STM_files/figure-html/unnamed-chunk-39-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Experience에 따른 스킬 중요도 시각화</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(skill_summary, <span class="fu">aes</span>(<span class="at">x =</span> Skill, <span class="at">y =</span> Average_Importance, <span class="at">fill =</span> Experience)) <span class="sc">+</span></span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"AI Skill Importance by Experience"</span>, <span class="at">x =</span> <span class="st">"Skill"</span>, <span class="at">y =</span> <span class="st">"Average Importance"</span>) <span class="sc">+</span></span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="STM_files/figure-html/unnamed-chunk-39-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># STEM 여부에 따른 스킬 중요도 시각화</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(skill_summary, <span class="fu">aes</span>(<span class="at">x =</span> Skill, <span class="at">y =</span> Average_Importance, <span class="at">fill =</span> STEM)) <span class="sc">+</span></span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"AI Skill Importance by STEM"</span>, <span class="at">x =</span> <span class="st">"Skill"</span>, <span class="at">y =</span> <span class="st">"Average Importance"</span>) <span class="sc">+</span></span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="STM_files/figure-html/unnamed-chunk-39-3.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

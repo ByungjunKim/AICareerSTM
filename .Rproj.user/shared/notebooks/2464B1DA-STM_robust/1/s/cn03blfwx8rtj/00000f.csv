@@ -1,0 +1,2 @@
+"0","# N개 이상의 문서에서 등장한 단어만 사용(lower.thresh)"
+"0","out <- prepDocuments(myprocess$documents, myprocess$vocab, myprocess$meta,lower.thresh = 20,verbose = F)"

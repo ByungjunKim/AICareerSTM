@@ -1,0 +1,4 @@
+"0","stm_model1 <- stm(out$documents, out$vocab, K=11,"
+"0","              prevalence= ~Degree+Experience+STEM,"
+"0","              data=out$meta, init.type=""Spectral"",seed=2024,"
+"0","              verbose = F)"

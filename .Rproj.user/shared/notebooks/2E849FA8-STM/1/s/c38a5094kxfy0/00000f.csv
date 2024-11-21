@@ -1,0 +1,2 @@
+"0","# df <- data.frame(py_load_object('./1014_non_STEM_marked_v2.pkl'))"
+"0","df <- readRDS('./1014_non_STEM_marked_v2.rds')"

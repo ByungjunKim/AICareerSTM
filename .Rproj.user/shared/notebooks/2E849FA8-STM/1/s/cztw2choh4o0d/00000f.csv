@@ -1,0 +1,1 @@
+"0","df <- df %>% filter(!is.na(Degree)) # NA 값이 있는 행 제거"

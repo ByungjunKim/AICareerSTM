@@ -1,0 +1,16 @@
+"0","myprocess <- textProcessor(df$bigrams, metadata = df ,wordLengths=c(2,Inf),lowercase = F,"
+"0","                           removenumbers = F, removepunctuation = F, removestopwords = F, stem = F,customstopwords = stopwords)"
+"1","Building corpus... 
+"
+"1","Remove Custom Stopwords...
+"
+"1","Creating Output... 
+"
+"0","myprocess"
+"1","A text corpus with 1774 documents, and an 9987 word dictionary.
+"
+"0","length(myprocess$docs.removed)"
+"1","[1]"
+"1"," 0"
+"1","
+"

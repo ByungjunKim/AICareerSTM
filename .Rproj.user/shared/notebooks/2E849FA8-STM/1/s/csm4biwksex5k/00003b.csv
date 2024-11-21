@@ -1,0 +1,3 @@
+"0","# 필요한 컬럼만 활용"
+"0","df <- df %>% select(RID,Title, Company, Position, Experience, Degree, Offer_type, non.STEM,bigrams)"
+"0","df"
